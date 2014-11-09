@@ -6,11 +6,16 @@ RUN opkg-install curl &&\
     gunzip btsync.tar.gz &&\
     tar -xvf btsync.tar &&\
     rm btsync.tar &&\
-    mkdir -p /btsync/.sync
+    mkdir -p /data/.sync
 
-ADD btsync.conf /btsync/
-VOLUME /btsync/.sync
+ADD web.conf /home/
+ADD backup.conf /home/
+ADD run.sh /
+
+RUN chmod +x /run.sh
+
+VOLUME /data
 EXPOSE 8888 55555
-ENTRYPOINT ["btsync", "--nodaemon"]
-CMD ["--config", "/btsync/btsync.conf"]
+ENTRYPOINT ["/run.sh"]
+
 
