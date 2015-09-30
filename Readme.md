@@ -25,7 +25,7 @@ open http://$(boot2docker ip 2>/dev/null):8888
 * RO_SECRET: Read Only key for the default shared volume /data
 * RW(=true/false): tells if you wanna mount /data in RO or RW mode
 
-## Real case scenario
+## Real World use case:
 
 ### SYNC /data (RW mode):
 
